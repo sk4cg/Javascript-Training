@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+
+<body>
+    <h1>JS Training</h1>
+
+    <script>
+        var socket = io.connect('http://localhost:8080');
+        socket.on('messages', function (data) {
+            alert(data.hello);
+        });
+
+        $("form").submit(function (e) {
+                var message = $("#chat_input").val();
+                socket.emit("messages", message);
+            });
+    </script>
+
+    <form>
+        Message:<br>
+        <input type="text" id="chat_input" value="Sneha"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+
+</html>
